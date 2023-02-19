@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.35",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "input": "^1.0.1",
+    "ms-prettify": "^1.4.0",
+    "telegram": "^2.13.6"
+  },
+  "name": "d3",
+  "description": "wss://stream.binance.com:9443",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "pm2 start x",
+    "deploy": "pm2 start src/index.js --name x",
+    "logs": "pm2 logs x --lines 1000",
+    "stop": "pm2 stop x",
+    "delete": "pm2 delete x",
+    "restart": "pm2 restart x",
+    "git-start": "git pull origin master && npm run start && npm run logs"
+  },
+  "author": "",
+  "license": "ISC"
+}
