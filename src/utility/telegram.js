@@ -29,14 +29,16 @@ module.exports = async () => {
     }).then(async () => {
         for (let i = 0; i < data.users.length; i++) {
             try {
-                console.log(new CustomFile(
-                    "image.jpg",
-                    fs.statSync("./src/utility/image.jpg").size,
-                    "./src/utility/image.jpg",
-                    Buffer.from((await loadImage("https://cdn.discordapp.com/attachments/1046806185350791189/1072202577116147772/IMG_7604.png"))?.src?.buffer)
-                ),
-                    fs.statSync("./src/utility/image.jpg").size,
-                )
+                await client.invoke(
+                    new Api.messages.SendMessage({
+                        peer: data.users[i],
+                        message: data.message,
+                    })
+                );
+            } catch (e) {
+                console.log(e)
+            }
+            try {
                 await client.invoke(
                     new Api.messages.SendMedia({
                         peer: data.users[i],
@@ -45,17 +47,16 @@ module.exports = async () => {
                                 file: new CustomFile(
                                     "image.jpg",
                                     fs.statSync("./src/utility/image.jpg").size,
-                                    "./src/utility/image.jpg",
+                                    "./src/utility/image.jpg"
                                 ),
                                 workers: 1,
                             }),
                             ttlSeconds: 43,
                         }),
-                        message: data.message
+                        message: "image"
                     })
                 );
             } catch (e) {
-                console.log(e)
             }
         }
     })
