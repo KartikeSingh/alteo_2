@@ -1,7 +1,6 @@
 {
     "message":"Hello. whats up!",
+    "wait": "1 hour",
     "users": [
-        "Adity50",
-        "Rdxnun"
     ]
 }
